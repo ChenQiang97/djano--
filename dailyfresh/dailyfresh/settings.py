@@ -137,3 +137,26 @@ EMAIL_HOST_USER = 'chenqiang97@foxmail.com'
 EMAIL_HOST_PASSWORD = 'ifhxottlshddeacd'
 #收件人看到的发件人
 EMAIL_FROM = '天天生鲜<chenqiang97@foxmail.com>'
+
+# Django的缓存配置
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://127.0.0.1:6379/9",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+'''
+Django 默认可以使用任何 cache backend 作为 session backend, 
+将 django-redis 作为 session 储存后端不用安装任何额外的 backend
+'''
+# 配置session存储
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+SESSION_CACHE_ALIAS = "default"
+
+# 未登录则直接跳到此目录
+# http://127.0.0.1:8000/user/login?next=/user/
+LOGIN_URL = '/user/login'
