@@ -160,3 +160,12 @@ SESSION_CACHE_ALIAS = "default"
 # 未登录则直接跳到此目录
 # http://127.0.0.1:8000/user/login?next=/user/
 LOGIN_URL = '/user/login'
+
+# 设置Django的文件存储类
+DEFAULT_FILE_STORAGE='utils.fdfs.storage.FDFSStorage'
+
+# 设置fdfs使用的client.conf文件路径 名字可自定义
+FDFS_CLIENT_CONF='./utils/fdfs/client.conf'
+
+# 设置fdfs存储服务器上nginx的IP和端口号 可自定义
+FDFS_URL='http://172.16.179.131:8888/'
